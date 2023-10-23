@@ -4,9 +4,8 @@ select * from payment where payment.amount < 300 order by payment.amount;
 
 select * from paymenttype order by paymenttype.name;
 
-select * from student order by student.name;
+-- Task 4: Select students filtered in reverse alphabetical order
+SELECT * FROM student
+ORDER BY student.name DESC;
 
-select student.id, student.name, student.birthday, student.groupnumber from student
-inner join payment on student.id = payment.student_id
-where payment.amount > 1000
-order by student.birthday;
+SELECT student.id, student.name, student.birthday, student.groupNumber FROM student INNER JOIN payment ON student.id = payment.student_id WHERE payment.amount > 1000 ORDER BY student.birthday;
