@@ -1,13 +1,8 @@
--- Task 1: Select the youngest student's birthday
-SELECT MIN(birthday) FROM Student;
+select birthday from student order by birthday desc fetch first 1 rows only;
 
--- Task 2: Find the earliest made payment's date
-SELECT MIN(payment_date) FROM Payment;
+select payment_date from payment order by payment_date fetch first 1 rows only;
 
--- Task 3: Find the average mark by Math
-SELECT AVG(mark) FROM Mark
-WHERE subject_id = (SELECT id FROM Subject WHERE name = 'PE and Math');
+select avg(mark.mark) from mark inner join subject on mark.subject_id = subject.id where subject.name = 'Math';
 
--- Task 4: Find the min amount of payment for payment type "WEEKLY"
-SELECT MIN(amount) FROM Payment
-WHERE type_id = (SELECT id FROM PaymentType WHERE name = 'WEEKLY');
+select min(payment.amount) from payment inner join paymenttype on payment.type_id = paymenttype.id
+where paymenttype.name = 'WEEKLY';

@@ -1,17 +1,11 @@
--- Task 1: Select Payments with "MONTHLY" type
-SELECT * FROM Payment
-WHERE type_id = (SELECT id FROM PaymentType WHERE name = 'MONTHLY');
+select * from payment where type_id = 4;
 
--- Task 2: Select all marks by Art
-SELECT * FROM Mark
-WHERE subject_id = (SELECT id FROM Subject WHERE name = 'Art and Music');
+select mark.id, mark.student_id, mark.subject_id, mark.mark from mark inner join subject
+ on mark.subject_id = subject.id where subject.name = 'Art';
 
--- Task 3: Select all students who have "WEEKLY" payments
-SELECT * FROM Student
-WHERE id IN (SELECT student_id FROM Payment
-    WHERE type_id = (SELECT id FROM PaymentType WHERE name = 'WEEKLY'));
+select student.id, student.name, student.birthday, student.groupnumber from payment
+ inner join student on payment.student_id = student.id where payment.type_id = 2;
 
--- Task 4: Select all students who have marks by Math
-SELECT * FROM Student
-WHERE id IN (SELECT student_id FROM Mark
-    WHERE subject_id = (SELECT id FROM Subject WHERE name = 'PE and Math'));
+select student.id, student.name, student.birthday, student.groupnumber from mark
+ inner join subject on mark.subject_id = subject.id inner join student on mark.student_id = student.id
+ where subject.name = 'Math';

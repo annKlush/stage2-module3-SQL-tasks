@@ -1,23 +1,3 @@
--- Task 1: Select all columns from Subject where average mark for that subject is more than average mark for all subjects
-SELECT s.*
-FROM Subject s
-WHERE (
-    SELECT AVG(mark)
-    FROM Mark m
-    WHERE m.subject_id = s.id
-) > (
-    SELECT AVG(mark)
-    FROM Mark
-);
+select id, name, description, grade from ((select subject.id, subject.name, subject.description, subject.grade, avg(mark.mark) as individual_avg from subject inner join mark on subject.id = mark.subject_id group by subject.id) cross join (select avg(mark.mark) as overall_avg from mark)) where individual_avg > overall_avg;
 
--- Task 2: Select all students who paid for school less than average paid amount for all students
-SELECT *
-FROM Student
-WHERE (
-    SELECT AVG(p.amount)
-    FROM Payment p
-) > (
-    SELECT SUM(p.amount)
-    FROM Payment p
-    WHERE p.student_id = Student.id
-);
+select id, name, birthday, groupnumber from ((select student.id, student.name, student.birthday, student.groupnumber, sum(payment.amount) as ind_sum from student inner join payment on student.id = payment.student_id group by student.id) cross join (select avg(indiv_sum) as avg_ind_sum from (select sum(payment.amount) as indiv_sum from student inner join payment on student.id = payment.student_id group by student.id))) where ind_sum < avg_ind_sum;

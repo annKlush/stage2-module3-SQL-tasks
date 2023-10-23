@@ -1,19 +1,7 @@
--- Task 1: Update table 'Subject'. Update grade 5 for subject name 'End of Suburbia: Oil Depletion and the Collapse of the American Dream'
-UPDATE Subject
-SET grade = 5
-WHERE name = 'End of Suburbia: Oil Depletion and the Collapse of the American Dream';
+update subject set grade = 5 where name = 'End of Suburbia: Oil Depletion and the Collapse of the American Dream';
 
--- Task 2: Update table 'Student'. Update groupNumber 8 for student 'Tremaine Worvill'
-UPDATE Student
-SET groupNumber = 8
-WHERE name = 'Tremaine Worvill';
+update student set groupnumber = 8 where name = 'Tremaine Worvill';
 
--- Task 3: Update table 'Payment'. Update Amount to 500 and student_id to 2 in case payment_date > 2021-01-01 and type 2
-UPDATE Payment
-SET amount = 500, student_id = 2
-WHERE payment_date > '2021-01-01' AND type_id = 2;
+update payment set amount = 500, student_id = 2 where payment_date > '2021-01-01' and type_id = 2;
 
--- Task 4: Update table 'Mark'. Update Mark = 2 for subject_id 315
-UPDATE Mark
-SET mark = 2
-WHERE subject_id = 315;
+update mark set mark.mark = 2 where mark.subject_id = 315;

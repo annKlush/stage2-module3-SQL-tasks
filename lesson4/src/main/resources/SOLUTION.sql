@@ -1,11 +1,7 @@
--- Task 1: Select all students with all the available fields
-SELECT * FROM Student;
+SELECT * FROM student;
 
--- Task 2: Select 50 students
-SELECT * FROM Student LIMIT 50;
+SELECT * FROM student FETCH FIRST 50 ROWS ONLY;
 
--- Task 3: Select only students' names
-SELECT name FROM Student;
+SELECT name FROM student;
 
--- Task 4: Select unique values of Amount from Orders table
-SELECT DISTINCT amount FROM Payment;
+SELECT DISTINCT amount FROM payment;

@@ -1,19 +1,7 @@
--- Task 1: Delete all students with grade more than 4 and all relationships with this student
-DELETE FROM Student
-WHERE groupNumber > 4;
+delete from student where groupnumber >= 4;
 
--- Task 2: Delete students who have at least one mark less than 4
-DELETE FROM Student
-WHERE id IN (
-    SELECT student_id
-    FROM Mark
-    WHERE mark < 4
-);
+delete from student where student.id in (select student.id from student inner join mark on student.id = mark.student_id where mark.mark < 4);
 
--- Task 3: Delete "Daily" payment type and all relationships with this type
-DELETE FROM PaymentType
-WHERE name = 'DAILY';
+delete from paymenttype where paymenttype.id = 1;
 
--- Task 4: Delete All marks less than 7
-DELETE FROM Mark
-WHERE mark < 7;
+delete from mark where mark.mark < 7;
